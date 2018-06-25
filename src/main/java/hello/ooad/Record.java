@@ -21,8 +21,8 @@ public class Record extends DomainObject {
     @ManyToOne
     private Plan plan;
 
-    Record() {}
-    Record(Date date, String person, int time, String detail) {
+    public Record() {}
+    public Record(Date date, String person, int time, String detail) {
         this.date = date;
         this.person = person;
         this.time = time;
