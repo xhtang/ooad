@@ -24,7 +24,12 @@ public class Equipment extends DomainObject {
     private Collection<Record> records;
 
     public Equipment() {}
-
+    public Equipment(String e_number, String e_type, String e_address, String e_model) {
+        this.e_number = e_number;
+        this.e_type = e_type;
+        this.e_address = e_address;
+        this.e_model = e_model;
+    }
 
     public String getE_number() {
         return e_number;

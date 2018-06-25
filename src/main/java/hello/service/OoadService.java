@@ -15,7 +15,7 @@ public interface OoadService {
 
     Equipment getEquipmentById(int id);
 
-    Equipment getEquipentByNum(String number);
+    Equipment getEquipmentByNum(String number);
 
     int addPlan(Plan plan);
 

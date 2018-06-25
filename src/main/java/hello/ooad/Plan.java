@@ -22,8 +22,10 @@ public class Plan extends DomainObject {
     @OneToMany(mappedBy = "plan")
     private Collection<Record> records;
 
-    public Plan() {
-
+    public Plan() {}
+    public Plan(int time, Date date) {
+        this.time = time;
+        this.date = date;
     }
 
 

@@ -27,23 +27,13 @@ public class CreateData {
     }
 
     public void createData() {
-        Equipment asus = new Equipment();
-        asus.setE_number("ASUS");
-        Plan plan1 = new Plan();
-        plan1.setDate(new Date());
-        plan1.setTime(10);
-        Plan plan2 = new Plan();
-        plan2.setDate(new Date());
-        plan2.setTime(20);
+        Equipment equipment1 = new Equipment();
+        equipment1.setE_number("A0000");
+        equipment1.setE_type("camera");
+        equipment1.setE_model("t800");
 
-        asus.addPlan(plan1);
-        asus.addPlan(plan2);
 
-        int eid = service.addEquipment(asus);
-        service.addPlan(plan1);
-        service.addPlan(plan2);
-        List<Plan> plans = service.getPlansByEquipmentId(eid);
-        System.out.println("         plan's size:    "+plans.size());
-        System.out.println("         plan1's equipment:    "+plans.get(0).getEquipment().getE_number());
+
+        
     }
 }

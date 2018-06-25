@@ -48,7 +48,7 @@ public class Application {
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/ooad?useSSL=false");
 		dataSource.setUsername("root");
-		dataSource.setPassword("123456");
+		dataSource.setPassword("");
 		
 		return dataSource;
 	}

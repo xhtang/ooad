@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -34,8 +35,9 @@ public class OoadServiceImpl implements OoadService {
     }
 
     @Override
-    public Equipment getEquipentByNum(String number) {
-        return (Equipment) getCurrentSession().createQuery("from Equipment e where e.e_number = "+ number ).list().get(0);
+    public Equipment getEquipmentByNum(String number) {
+        String sql = " from Equipment e where e.e_number = \'" + number + "\'";
+        return (Equipment) getCurrentSession().createQuery(sql).list().get(0);
     }
 
     @Override
@@ -56,15 +58,31 @@ public class OoadServiceImpl implements OoadService {
 
     @Override
     public List<Plan> getPlansByDate(int time) {
-        long ms = time * 24 * 60 * 60 * 1000;
-        Date date = new Date(2018, 6, 26);
-        return (getCurrentSession().createQuery("from Plan plan where plan.date - date <  "+ ms ).list());
+        List<Plan> plans = getCurrentSession().createQuery("from Plan plan").list();
+        Date newDate = new Date();
+        long ms = newDate.getTime() + time * 24 * 60 * 60 * 1000;
+
+        Iterator<Plan> it = plans.iterator();
+        while (it.hasNext()) {
+            Plan plan = it.next();
+            Date date = plan.getDate();
+            date.setTime(date.getTime() + plan.getTime() * 24 * 60 * 60 * 1000);
+            if (date.getTime() > ms) {
+                it.remove();
+            }
+        }
+        return plans;
     }
 
     @Override
     public int addRecord(Record record) {
         long id = (long) getCurrentSession().save(record);
+        long pid = record.getPlan().getId();
+        Plan plan = getPlanById((int) pid);
+        plan.setDate(record.getDate());
+        getCurrentSession().update(plan);
         return (int)id;
+
     }
 
     @Override
