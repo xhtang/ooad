@@ -1,0 +1,28 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "gs-accessing-data-hibernate-session",
+                "projectName": "gs-accessing-data-hibernate-session",
+                "workingDirectory": "/Users/zhangtiange/Documents/course/demos/spring-hibernate-demo/gs-accessing-data-hibernate-session",
+                "args": [],
+                "vmargs": [],
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "gs-accessing-data-hibernate-session",
+                "projectName": "gs-accessing-data-hibernate-session",
+                "workingDirectory": "/Users/zhangtiange/Documents/course/demos/spring-hibernate-demo/gs-accessing-data-hibernate-session",
+                "args": [],
+                "vmargs": [],
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
