@@ -17,4 +17,7 @@ public class PersistenceManager{
 		return sessionFactory.getCurrentSession();
 	}
 
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
 }

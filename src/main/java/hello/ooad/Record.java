@@ -12,7 +12,7 @@ import java.util.Date;
 public class Record extends DomainObject {
     private Date date;
     private String person;
-    private int time;
+    private double time;
     private String detail;
 
     @ManyToOne
@@ -45,11 +45,11 @@ public class Record extends DomainObject {
         this.person = person;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
