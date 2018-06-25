@@ -21,9 +21,9 @@ public interface OoadService {
 
     Plan getPlanById(int id);
 
-    List<Plan> getPlansByEquipmentId(int eid);
+    List getPlansByEquipmentId(int eid);
 
-    List<Plan> getPlansByDate(int time);
+    List getPlansByDate(int time);
 
     int addRecord(Record record);
 
