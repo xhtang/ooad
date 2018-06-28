@@ -71,13 +71,5 @@ public class Application {
 		transactionManager.setSessionFactory(sessionFactory().getObject());
 		return transactionManager;
 	}
-	
-	
-	@Bean
-	public CommandLineRunner demo(CreateData data) {
-		return (args) -> {
-			 // data.createData();
-		};
-	}
 
 }

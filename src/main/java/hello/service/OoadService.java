@@ -11,24 +11,23 @@ import java.util.List;
  * Date: 2018/6/25.
  */
 public interface OoadService {
-    int addEquipment(Equipment equipment);
+    long addEquipment(Equipment equipment);
 
-    Equipment getEquipmentById(int id);
+    Equipment getEquipmentById(long id);
 
     Equipment getEquipmentByNum(String number);
 
-    int addPlan(Plan plan);
+    long addPlan(Plan plan);
 
-    Plan getPlanById(int id);
+    Plan getPlanById(long id);
 
-    List getPlansByEquipmentId(int eid);
+    List getPlansByEquipmentId(long eid);
 
-    List getPlansByDate(int time);
+    List getPlansByDate(long time);
 
-    int addRecord(Record record);
+    long addRecord(Record record);
 
-    int getHoursByENum(String number);
+    long getHoursByENum(String number);
 
-    int getHoursByEnumAndPlan(String number, int pid);
-
+    long getHoursByEnumAndPlan(String number, long pid);
 }

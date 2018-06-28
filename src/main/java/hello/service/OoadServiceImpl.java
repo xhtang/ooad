@@ -26,14 +26,12 @@ public class OoadServiceImpl implements OoadService {
     
     
     @Override
-    public int addEquipment(Equipment equipment) {
-        long id = (long) sessionFactory.getCurrentSession().save(equipment);
-        System.out.println(sessionFactory.getCurrentSession().toString());
-        return (int)id;
+    public long addEquipment(Equipment equipment) {
+        return (long) sessionFactory.getCurrentSession().save(equipment);
     }
 
     @Override
-    public Equipment getEquipmentById(int id) {
+    public Equipment getEquipmentById(long id) {
         return (Equipment) sessionFactory.getCurrentSession().createQuery(
                 "from Equipment e where e.id = "+ id ).list().get(0);
     }
@@ -45,24 +43,24 @@ public class OoadServiceImpl implements OoadService {
     }
 
     @Override
-    public int addPlan(Plan plan) {
-        long id = (long) sessionFactory.getCurrentSession().save(plan);
-        return (int)id;
+    public long addPlan(Plan plan) {
+        return (long) sessionFactory.getCurrentSession().save(plan);
+
     }
 
     @Override
-    public Plan getPlanById(int id) {
+    public Plan getPlanById(long id) {
         return (Plan) sessionFactory.getCurrentSession().createQuery("from Plan plan where plan.id = "+ id ).list().get(0);
     }
 
     @Override
-    public List<Plan> getPlansByEquipmentId(int eid) {
+    public List<Plan> getPlansByEquipmentId(long eid) {
         return (sessionFactory.getCurrentSession().createQuery(
                 "from Plan plan where plan.equipment.id = "+ eid ).list());
     }
 
     @Override
-    public List<Plan> getPlansByDate(int time) {
+    public List<Plan> getPlansByDate(long time) {
         List<Plan> plans = sessionFactory.getCurrentSession().createQuery(
                 "from Plan plan").list();
         Date newDate = new Date();
@@ -81,21 +79,20 @@ public class OoadServiceImpl implements OoadService {
     }
 
     @Override
-    public int addRecord(Record record) {
+    public long addRecord(Record record) {
         long id = (long) sessionFactory.getCurrentSession().save(record);
         long pid = record.getPlan().getId();
-        Plan plan = getPlanById((int) pid);
+        Plan plan = getPlanById(pid);
         plan.setDate(record.getDate());
         sessionFactory.getCurrentSession().update(plan);
-        return (int)id;
-
+        return id;
     }
 
     @Override
-    public int getHoursByENum(String number) {
+    public long getHoursByENum(String number) {
         List<Record> list = sessionFactory.getCurrentSession().createQuery(
                 "from  Record record where record.equipment.e_number = \'" + number + "\'").list();
-        int hour = 0;
+        long hour = 0;
         for (Record record: list) {
             hour += record.getTime();
         }
@@ -103,10 +100,10 @@ public class OoadServiceImpl implements OoadService {
     }
 
     @Override
-    public int getHoursByEnumAndPlan(String number, int pid) {
+    public long getHoursByEnumAndPlan(String number, long pid) {
         List<Record> list = sessionFactory.getCurrentSession().createQuery(
                 "from  Record record where record.equipment.e_number = \'" + number + "\' and record.plan.id = "+ pid).list();
-        int hour = 0;
+        long hour = 0;
         for (Record record: list) {
             hour += record.getTime();
         }
